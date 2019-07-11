@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+def moduleInfo = [
+        'compileSdkVersion': rootProject.ext.bulletInfo.compileSdkVersion,
+        'targetSdkVersion' : rootProject.ext.bulletInfo.targetSdkVersion,
+        'minSdkVersion'    : 21,
+        'versionCode'      : 1,
+        'versionName'      : "1.0.0"
+]
+
+android {
+    compileSdkVersion moduleInfo.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion moduleInfo.minSdkVersion
+        targetSdkVersion moduleInfo.targetSdkVersion
+        versionCode moduleInfo.versionCode
+        versionName moduleInfo.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def dependenceVersions = [
+        'retrofitVersion': "2.6.0",
+        'rxjavaVersion':"2.2.10",
+        'rxanroidVersion':"2.1.1",
+        'gsonVersion':"2.8.5"
+]
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:1.1.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0"
+
+    api "com.squareup.okhttp3:okhttp:4.0.0"
+    api "com.squareup.retrofit2:retrofit:$dependenceVersions.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$dependenceVersions.retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$dependenceVersions.retrofitVersion"
+    api "com.squareup.retrofit2:converter-scalars:$dependenceVersions.retrofitVersion"
+    api "io.reactivex.rxjava2:rxjava:$dependenceVersions.rxjavaVersion"
+    api "io.reactivex.rxjava2:rxandroid:$dependenceVersions.rxanroidVersion"
+
+    implementation "com.google.code.gson:gson:$dependenceVersions.gsonVersion"
+    implementation "androidx.annotation:annotation:1.0.0"
+}

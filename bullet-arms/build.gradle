@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+
+
+def moduleInfo = [
+        'compileSdkVersion': rootProject.ext.bulletInfo.compileSdkVersion,
+        'targetSdkVersion' : rootProject.ext.bulletInfo.targetSdkVersion,
+        'minSdkVersion'    : 21,
+        'versionCode'      : 1,
+        'versionName'      : "1.0.0"
+]
+
+android {
+    compileSdkVersion moduleInfo.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion moduleInfo.minSdkVersion
+        targetSdkVersion moduleInfo.targetSdkVersion
+        versionCode moduleInfo.versionCode
+        versionName moduleInfo.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+def dependenceVersions = [
+        'lifecycleVersion': "2.0.0-rc01",
+        'appcompatVersion': "1.0.0",
+        'eventbusVersion':"3.1.1"
+]
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:1.1.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0"
+
+    api "androidx.lifecycle:lifecycle-common-java8:$dependenceVersions.lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-extensions:$dependenceVersions.lifecycleVersion"
+    api "androidx.appcompat:appcompat:$dependenceVersions.appcompatVersion"
+
+    api "org.greenrobot:eventbus:$dependenceVersions.eventbusVersion"
+
+    api project(':bullet-utils')
+}

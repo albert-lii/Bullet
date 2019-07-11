@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="bulletArms_CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="bulletArms_CircleProgressBar">
+        <attr name="cpb_text" format="string" />
+        <attr name="cpb_textColor" format="color" />
+        <attr name="cpb_textSize" format="dimension" />
+        <attr name="cpb_barColor" format="color" />
+        <attr name="cpb_barWidth" format="dimension" />
+        <attr name="cpb_barLength" format="dimension" />
+        <attr name="cpb_rimColor" format="color" />
+        <attr name="cpb_rimWidth" format="dimension" />
+        <attr name="cpb_contourColor" format="color" />
+        <attr name="cpb_contourSize" format="dimension" />
+        <attr name="cpb_radius" format="dimension" />
+        <attr name="cpb_circleColor" format="color" />
+        <attr name="cpb_spinSpeed" format="float" />
+        <attr name="cpb_delayMillis" format="integer" />
+    </declare-styleable>
+</resources>

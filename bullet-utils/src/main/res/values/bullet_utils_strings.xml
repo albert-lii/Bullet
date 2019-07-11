@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bulletUtils_permission_positive">允许</string>
+    <string name="bulletUtils_permission_negative">拒绝</string>
+</resources>
